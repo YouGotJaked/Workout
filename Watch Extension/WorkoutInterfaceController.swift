@@ -31,29 +31,4 @@ class WorkoutInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         workout = Workout.allWorkouts().first
     }
-    
-    var flight: Flight? {
-        didSet {
-            guard let flight = flight else { return }
-            
-            flightLabel.setText("Flight \(flight.shortNumber)")
-            routeLabel.setText(flight.route)
-            boardingLabel.setText("\(flight.number) Boards")
-            boardTimeLabel.setText(flight.boardsAt)
-            
-            if flight.onSchedule {
-                statusLabel.setText("On Time")
-            } else {
-                statusLabel.setText("Delayed")
-                statusLabel.setTextColor(.red)
-            }
-            gateLabel.setText("Gate \(flight.gate)")
-            seatLabel.setText("Seat \(flight.seat)")
-        }
-    }
-    
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-        flight = Flight.allFlights().first
-    }
 }
