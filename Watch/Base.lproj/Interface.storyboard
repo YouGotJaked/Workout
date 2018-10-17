@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AbW-d2-nOg">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+    </dependencies>
+    <scenes>
+        <!--Workout-->
+        <scene sceneID="C0u-9k-NPT">
+            <objects>
+                <controller identifier="Workout" hidesWhenLoading="NO" id="AbW-d2-nOg" customClass="WorkoutInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="zrD-E1-21t">
+                            <items>
+                                <group alignment="left" layout="vertical" spacing="0.0" id="cmF-Pn-xpU">
+                                    <items>
+                                        <label alignment="left" text="Chest" id="DZU-Eu-2fg">
+                                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                                        </label>
+                                        <label alignment="left" text="Exercise 1" id="0uc-vY-Z5x"/>
+                                    </items>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="0.0"/>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" spacing="0.0" id="syh-g2-Fh6">
+                            <items>
+                                <label alignment="left" text="Dumbbell Bench Press" numberOfLines="0" id="yhc-Ng-91M">
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="24"/>
+                                </label>
+                                <group width="1" alignment="left" id="6gc-T7-41D">
+                                    <items>
+                                        <label alignment="left" text="4 x 8" id="TZc-c6-TZJ"/>
+                                        <label alignment="right" text="HIGH" id="xGC-E1-izR">
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <button width="0.29999999999999999" alignment="left" title="❤️" id="EhT-RK-34M"/>
+                    </items>
+                    <connections>
+                        <outlet property="categoryLabel" destination="DZU-Eu-2fg" id="5XE-qZ-W1j"/>
+                        <outlet property="exerciseLabel" destination="yhc-Ng-91M" id="1aH-Gl-r0R"/>
+                        <outlet property="exerciseNumberLabel" destination="0uc-vY-Z5x" id="BX5-fn-h2k"/>
+                        <outlet property="favoriteButton" destination="EhT-RK-34M" id="2wp-WP-aDL"/>
+                        <outlet property="intensityLabel" destination="xGC-E1-izR" id="7Fd-UX-9ow"/>
+                        <outlet property="repetitionLabel" destination="TZc-c6-TZJ" id="PI1-pA-V0j"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-171" y="-5"/>
+        </scene>
+    </scenes>
+</document>
