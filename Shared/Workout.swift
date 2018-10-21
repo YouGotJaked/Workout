@@ -7,8 +7,22 @@
 //
 
 import WatchKit
+import Foundation
 
-class Workout {
+// Custom data type to define intensity levels
+enum Intensity: String, Codable {
+    case low = "low"
+    case mix = "mix"
+    case high = "high"
+}
+
+extension Intensity: Equatable {
+    static func == (lhs: Intensity, rhs: Intensity) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
+class Workout: Codable {
     // PROPERTIES
     var category: String = "" {
         willSet(newCategory) {
@@ -26,7 +40,7 @@ class Workout {
             print("\(oldSize) has been resized to \(self.size)")
         }
     }
-    var intensity: Bool = false {
+    var intensity: Intensity = Intensity.mix {
         willSet(newIntensity) {
             print("\(self.intensity) will be set to \(newIntensity)")
         }
@@ -34,10 +48,11 @@ class Workout {
             print("\(oldIntensity) has been renamed to \(self.size)")
         }
     }
+    // add dateCreated property
     var exercises: [Exercise] = []
     
     // CONSTRUCTOR
-    init(category: String, size: Int = 6, intensity: Bool = true) {
+    init(category: String, size: Int = 6, intensity: Intensity = Intensity.mix) {
         self.category = category
         self.size = size
         self.intensity = intensity
@@ -62,33 +77,62 @@ class Workout {
         }
     }
     
-    class func allExercises() -> [Exercise] {
-        var exercises: [Exercise] = []
-        guard let path = Bundle.main.path(forResource: ")
-    }
-    
-    class func allFlights() -> [Flight] {
-        var flights: [Flight] = []
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        guard let path = Bundle.main.path(forResource: "Flights", ofType: "json"),
+    // fix implementation
+    class func allWorkouts() -> [Workout] {
+        var workouts: [Workout] = []
+        guard let path = Bundle.main.path(forResource: "Workouts", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-                return flights
+                return workouts
         }
-        
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
-            json.forEach({ (dict: [String: String]) in flights.append(Flight(dictionary: dict, formatter: formatter)) })
+            //json.forEach({ (dict: [String: String]) in workouts.append(Workout(dictionary: dict, formatter: formatter)) })
         } catch {
-            print(error)
+            print(error) // better error handling
         }
-        
-        return flights
+        return workouts
     }
     
+    static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    static let fileURL = DocumentDirURL.appendingPathComponent("/iOS/Workout/Shared/Workouts").appendingPathExtension("json")
+    
+    static func save<T: Encodable>(object: T) {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted // terminal viewing only
+        let data = try! encoder.encode(object)
+        let jsonString = String(data: data, encoding: .utf8)!
+        
+        do {
+            try jsonString.write(to: Workout.fileURL, atomically: true, encoding: .utf8)
+        } catch {
+            print("FAILED WITH ERROR: \(error)") // implement actual catch
+        }
+    }
+    
+    static func load() -> Workout {
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: Exercise.fileURL.path), options: .mappedIfSafe)
+            let jsonResult = try JSONDecoder().decode(Workout.self, from: data)
+            let jsonString = String(data: data, encoding: .utf8)!
+            print(jsonString)
+            return jsonResult
+        } catch {
+            print("FAILED WITH ERROR: \(error)") // implement actual catch
+            return Workout(category: "legs", size: 2, intensity: Intensity.low) // fix
+        }
+    }
     /*
     convenience init(dictionary: [String: String]) {
         <#statements#>
     }
     */
+}
+
+extension Workout: Equatable {
+    static func ==(lhs: Workout, rhs: Workout) -> Bool {
+        return lhs.category == rhs.category &&
+            lhs.size == rhs.size &&
+            lhs.intensity == rhs.intensity &&
+            lhs.exercises == rhs.exercises
+    }
 }

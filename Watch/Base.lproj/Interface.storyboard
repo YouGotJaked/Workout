@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AbW-d2-nOg">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z40-HI-vMm">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Workout-->
         <scene sceneID="C0u-9k-NPT">
             <objects>
-                <controller identifier="Workout" hidesWhenLoading="NO" id="AbW-d2-nOg" customClass="WorkoutInterfaceController" customModule="Watch_Extension">
+                <controller identifier="Exercise" title="Workout" hidesWhenLoading="NO" id="AbW-d2-nOg" customClass="WorkoutInterfaceController" customModule="Watch_Extension">
                     <items>
                         <group width="1" alignment="left" id="zrD-E1-21t">
                             <items>
@@ -55,6 +55,69 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="-171" y="-5"/>
+        </scene>
+        <!--Workout-->
+        <scene sceneID="ekt-pA-iUi">
+            <objects>
+                <controller identifier="WorkoutList" title="Workout" id="z40-HI-vMm" customClass="WorkoutListInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <table alignment="left" id="0Ij-sv-F7y">
+                            <items>
+                                <tableRow identifier="WorkoutRow" id="C6E-g3-uGP">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" spacing="6" id="tog-K8-O74">
+                                        <items>
+                                            <separator height="1" heightAdjustment="-4" alignment="left" verticalAlignment="center" id="JAM-QL-doZ">
+                                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                            <group alignment="left" layout="vertical" spacing="0.0" id="eHB-SK-FVE">
+                                                <items>
+                                                    <group width="1" height="32" alignment="left" spacing="4" id="eml-kU-ZZN">
+                                                        <items>
+                                                            <label alignment="left" verticalAlignment="center" text="Chest" id="OfJ-si-nMa">
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="font" type="boldSystem" pointSize="24"/>
+                                                            </label>
+                                                            <label alignment="right" verticalAlignment="center" text="MIX" id="Bow-On-Auq">
+                                                                <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="font" type="system" pointSize="16"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" alignment="left" id="AHc-QW-vMI">
+                                                        <items>
+                                                            <label alignment="left" text="7 EX" id="PTk-Ep-7Hf">
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </label>
+                                                            <dateLabel alignment="right" id="Kw7-5o-f2D">
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="font" type="system" pointSize="15"/>
+                                                                <dateFormatterStyle key="dateStyle" short="YES"/>
+                                                                <date key="previewedDate" timeIntervalSinceReferenceDate="567886140">
+                                                                    <!--2018-12-30 18:09:00 +0000-->
+                                                                </date>
+                                                            </dateLabel>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="CategoryLabel" destination="OfJ-si-nMa" id="0Of-41-sod"/>
+                        <outlet property="IntensityLabel" destination="Bow-On-Auq" id="IZ3-FV-1AN"/>
+                        <outlet property="categoryLabel" destination="OfJ-si-nMa" id="oqz-g3-SCz"/>
+                        <outlet property="dateCreatedLabel" destination="Kw7-5o-f2D" id="ia9-r0-EDE"/>
+                        <outlet property="intensityLabel" destination="Bow-On-Auq" id="RZM-Ll-JmC"/>
+                        <outlet property="sizeLabel" destination="PTk-Ep-7Hf" id="NTL-my-1vB"/>
+                        <outlet property="workoutsTable" destination="0Ij-sv-F7y" id="BrM-JB-jJu"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="88" y="-9"/>
         </scene>
     </scenes>
 </document>

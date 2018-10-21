@@ -23,7 +23,29 @@ class WorkoutInterfaceController: WKInterfaceController {
             guard let workout = workout else { return }
             
             categoryLabel.setText("\(workout.category)")
-            exerciseNumberLabel.setText("Exercise \(workout.exercises[].index)")
+            exerciseNumberLabel.setText("Exercise 1") // change to current exercise in workout
+            exerciseLabel.setText("\(workout.exercises[0])")
+            repetitionLabel.setText("\(workout.exercises[0].sets) x \(workout.exercises[0].reps)")
+            // check workout intensity
+            switch workout.intensity.rawValue {
+            case "high":
+                intensityLabel.setTextColor(.red)
+            case "mix":
+                intensityLabel.setTextColor(.cyan)
+            case "low":
+                intensityLabel.setTextColor(.green)
+            default:
+                intensityLabel.setAlpha(0) // make invisible
+            }
+            intensityLabel.setText("\(workout.intensity.rawValue)")
+            
+            // check if current exercise is favorite
+            if workout.exercises[0].favorite {
+                // show heart symbol
+            } else {
+                // show heart outline
+            }
+            // provide option to favorite and un-favorite, long press
         }
     }
     
