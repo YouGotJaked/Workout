@@ -48,14 +48,22 @@ class Workout: Codable {
             print("\(oldIntensity) has been renamed to \(self.size)")
         }
     }
+    var exercises: [Exercise] = [] {
+        willSet(newExercises) {
+            print("\(self.exercises) will be set to \(newExercises)")
+        }
+        didSet(oldExercises) {
+            print("\(oldExercises) has been reset to \(self.exercises)")
+        }
+    }
     // add dateCreated property
-    var exercises: [Exercise] = []
     
     // CONSTRUCTOR
-    init(category: String, size: Int = 6, intensity: Intensity = Intensity.mix) {
+    init(category: String, size: Int = 6, intensity: Intensity = Intensity.mix, exercises: [Exercise] = []) {
         self.category = category
         self.size = size
         self.intensity = intensity
+        self.exercises = exercises
     }
     
     // MODIFICATION MEMBER FUNCTIONS
@@ -77,22 +85,6 @@ class Workout: Codable {
         }
     }
     
-    // fix implementation
-    class func allWorkouts() -> [Workout] {
-        var workouts: [Workout] = []
-        guard let path = Bundle.main.path(forResource: "Workouts", ofType: "json"),
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-                return workouts
-        }
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
-            //json.forEach({ (dict: [String: String]) in workouts.append(Workout(dictionary: dict, formatter: formatter)) })
-        } catch {
-            print(error) // better error handling
-        }
-        return workouts
-    }
-    
     static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     static let fileURL = DocumentDirURL.appendingPathComponent("/iOS/Workout/Shared/Workouts").appendingPathExtension("json")
     
@@ -111,7 +103,7 @@ class Workout: Codable {
     
     static func load() -> Workout {
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: Exercise.fileURL.path), options: .mappedIfSafe)
+            let data = try Data(contentsOf: URL(fileURLWithPath: Workout.fileURL.path), options: .mappedIfSafe)
             let jsonResult = try JSONDecoder().decode(Workout.self, from: data)
             let jsonString = String(data: data, encoding: .utf8)!
             print(jsonString)
@@ -121,11 +113,29 @@ class Workout: Codable {
             return Workout(category: "legs", size: 2, intensity: Intensity.low) // fix
         }
     }
-    /*
-    convenience init(dictionary: [String: String]) {
-        <#statements#>
+    
+    // fix implementation
+    class func allWorkouts() -> [Workout] {
+        var workouts: [Workout] = []
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: Workout.fileURL.path)) else {
+            return workouts
+        }
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
+            json.forEach({ (dict: [String: String]) in workouts.append(Workout(dictionary: dict)) })
+        } catch {
+            print(error) // better error handling
+        }
+        return workouts
     }
-    */
+    
+    convenience init(dictionary: [String: String]) {
+        let category = dictionary["category"]!
+        let size = dictionary["size"]!
+        let intensity = dictionary["intensity"]!
+        //let exercises = dictionary["exercises"]!
+        self.init(category: category, size: Int(size)!, intensity: Intensity(rawValue: intensity)!, exercises: Exercise.allExercises())
+    }
 }
 
 extension Workout: Equatable {
