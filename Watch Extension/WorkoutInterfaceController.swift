@@ -24,7 +24,7 @@ class WorkoutInterfaceController: WKInterfaceController {
             
             categoryLabel.setText("\(workout.category)")
             exerciseNumberLabel.setText("Exercise 1") // change to current exercise in workout
-            exerciseLabel.setText("\(workout.exercises[0])")
+            exerciseLabel.setText("\(workout.exercises[0].name)")
             repetitionLabel.setText("\(workout.exercises[0].sets) x \(workout.exercises[0].reps)")
             // check workout intensity
             switch workout.intensity.rawValue {
@@ -37,7 +37,7 @@ class WorkoutInterfaceController: WKInterfaceController {
             default:
                 intensityLabel.setAlpha(0) // make invisible
             }
-            intensityLabel.setText("\(workout.intensity.rawValue)")
+            intensityLabel.setText("\(workout.intensity.rawValue.uppercased())")
             
             // check if current exercise is favorite
             if workout.exercises[0].favorite {
@@ -51,6 +51,8 @@ class WorkoutInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        workout = Workout.load()
+        if let workout = context as? Workout {
+            self.workout = workout
+        }
     }
 }

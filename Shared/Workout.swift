@@ -10,6 +10,7 @@ import WatchKit
 import Foundation
 
 // Custom data type to define intensity levels
+
 enum Intensity: String, Codable {
     case low = "low"
     case mix = "mix"
@@ -22,7 +23,7 @@ extension Intensity: Equatable {
     }
 }
 
-class Workout: Codable {
+class Workout: Codable, CustomStringConvertible {
     // PROPERTIES
     var category: String = "" {
         willSet(newCategory) {
@@ -53,10 +54,20 @@ class Workout: Codable {
             print("\(self.exercises) will be set to \(newExercises)")
         }
         didSet(oldExercises) {
-            print("\(oldExercises) has been reset to \(self.exercises)")
+            print("\(oldExercises) has been modified to \(self.exercises)")
         }
     }
     // add dateCreated property
+    
+    var description: String {
+        return """
+        \nWORKOUT
+        Category: \(self.category)
+        Size: \(self.size)
+        Intensity: \(self.intensity)
+        Exercises: \(self.exercises)
+        """
+    }
     
     // CONSTRUCTOR
     init(category: String, size: Int = 6, intensity: Intensity = Intensity.mix, exercises: [Exercise] = []) {
@@ -86,56 +97,59 @@ class Workout: Codable {
     }
     
     static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    static let fileURL = DocumentDirURL.appendingPathComponent("/iOS/Workout/Shared/Workouts").appendingPathExtension("json")
+    static let fileURL = DocumentDirURL.appendingPathComponent("Workouts").appendingPathExtension("json")
     
     static func save<T: Encodable>(object: T) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted // terminal viewing only
+        guard let path = Bundle.main.path(forResource: "Workouts", ofType: "json") else { return }
         let data = try! encoder.encode(object)
         let jsonString = String(data: data, encoding: .utf8)!
         
         do {
-            try jsonString.write(to: Workout.fileURL, atomically: true, encoding: .utf8)
+            try jsonString.write(to: URL(fileURLWithPath: path), atomically: true, encoding: .utf8)
         } catch {
             print("FAILED WITH ERROR: \(error)") // implement actual catch
         }
     }
     
-    static func load() -> Workout {
+    static func load() -> [Workout] {
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: Workout.fileURL.path), options: .mappedIfSafe)
-            let jsonResult = try JSONDecoder().decode(Workout.self, from: data)
+            guard let path = Bundle.main.path(forResource: "Workouts", ofType: "json") else { return [] }
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let jsonResult = try JSONDecoder().decode([Workout].self, from: data)
             let jsonString = String(data: data, encoding: .utf8)!
             print(jsonString)
             return jsonResult
         } catch {
             print("FAILED WITH ERROR: \(error)") // implement actual catch
-            return Workout(category: "legs", size: 2, intensity: Intensity.low) // fix
+            return [] // fix
         }
     }
     
-    // fix implementation
-    class func allWorkouts() -> [Workout] {
-        var workouts: [Workout] = []
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: Workout.fileURL.path)) else {
-            return workouts
-        }
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
-            json.forEach({ (dict: [String: String]) in workouts.append(Workout(dictionary: dict)) })
-        } catch {
-            print(error) // better error handling
-        }
-        return workouts
-    }
-    
-    convenience init(dictionary: [String: String]) {
-        let category = dictionary["category"]!
-        let size = dictionary["size"]!
-        let intensity = dictionary["intensity"]!
-        //let exercises = dictionary["exercises"]!
-        self.init(category: category, size: Int(size)!, intensity: Intensity(rawValue: intensity)!, exercises: Exercise.allExercises())
-    }
+    /* fix implementation
+     class func allWorkouts() -> [Workout] {
+     var workouts: [Workout] = []
+     guard let data = try? Data(contentsOf: URL(fileURLWithPath: Workout.fileURL.path), options: .mappedIfSafe) else {
+     return workouts
+     }
+     do {
+     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
+     json.forEach({ (dict: [String: String]) in workouts.append(Workout(dictionary: dict)) })
+     } catch {
+     print(error) // better error handling
+     }
+     return workouts
+     }
+     
+     convenience init(dictionary: [String: String]) {
+     let category = dictionary["category"]!
+     let size = dictionary["size"]!
+     let intensity = dictionary["intensity"]!
+     //let exercises = dictionary["exercises"]!
+     self.init(category: category, size: Int(size)!, intensity: Intensity(rawValue: intensity)!, exercises: Exercise.load())
+     }
+     */
 }
 
 extension Workout: Equatable {

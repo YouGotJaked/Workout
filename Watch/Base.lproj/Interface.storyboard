@@ -63,7 +63,7 @@
                     <items>
                         <table alignment="left" id="0Ij-sv-F7y">
                             <items>
-                                <tableRow identifier="WorkoutRow" id="C6E-g3-uGP">
+                                <tableRow identifier="WorkoutRow" id="C6E-g3-uGP" customClass="WorkoutRowController" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" spacing="6" id="tog-K8-O74">
                                         <items>
                                             <separator height="1" heightAdjustment="-4" alignment="left" verticalAlignment="center" id="JAM-QL-doZ">
@@ -94,6 +94,12 @@
                                             </group>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="categoryLabel" destination="OfJ-si-nMa" id="LdF-fh-P6X"/>
+                                        <outlet property="exerciseNumberLabel" destination="PTk-Ep-7Hf" id="dRM-RT-GRQ"/>
+                                        <outlet property="intensityLabel" destination="Bow-On-Auq" id="h54-SG-GER"/>
+                                        <outlet property="separator" destination="JAM-QL-doZ" id="04j-l2-aef"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>

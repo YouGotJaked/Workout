@@ -29,6 +29,7 @@
 		159E51FE2178354B00F22841 /* WorkoutListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E51FD2178354B00F22841 /* WorkoutListInterfaceController.swift */; };
 		15A2CD76217D8F08000EC7FC /* Workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 15A2CD75217D8F08000EC7FC /* Workouts.json */; };
 		15A2CD77217D8F22000EC7FC /* Workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 15A2CD75217D8F08000EC7FC /* Workouts.json */; };
+		15A2CD7921804EEE000EC7FC /* WorkoutRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A2CD7821804EEE000EC7FC /* WorkoutRowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		1597EBBA2176C24D001F743D /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		159E51FD2178354B00F22841 /* WorkoutListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListInterfaceController.swift; sourceTree = "<group>"; };
 		15A2CD75217D8F08000EC7FC /* Workouts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Workouts.json; sourceTree = "<group>"; };
+		15A2CD7821804EEE000EC7FC /* WorkoutRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				1597EBA72176BA98001F743D /* Info.plist */,
 				158DA3A42176EFFE002A54AF /* WorkoutInterfaceController.swift */,
 				159E51FD2178354B00F22841 /* WorkoutListInterfaceController.swift */,
+				15A2CD7821804EEE000EC7FC /* WorkoutRowController.swift */,
 			);
 			path = "Watch Extension";
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			files = (
 				1597EBA42176BA98001F743D /* ExtensionDelegate.swift in Sources */,
 				159E51FE2178354B00F22841 /* WorkoutListInterfaceController.swift in Sources */,
+				15A2CD7921804EEE000EC7FC /* WorkoutRowController.swift in Sources */,
 				1597EBBD2176DA3A001F743D /* Workout.swift in Sources */,
 				158DA3A52176EFFE002A54AF /* WorkoutInterfaceController.swift in Sources */,
 				1597EBBE2176DA3D001F743D /* Exercise.swift in Sources */,

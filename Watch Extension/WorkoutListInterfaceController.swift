@@ -18,6 +18,15 @@ class WorkoutListInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        workoutsTable.setNumberOfRows(workouts.size, withRowType: "WorkoutRow")
+        workoutsTable.setNumberOfRows(workouts.count, withRowType: "WorkoutRow")
+        for index in 0..<workoutsTable.numberOfRows {
+            guard let controller = workoutsTable.rowController(at: index) as? WorkoutRowController else { continue }
+            controller.workout = workouts[index]
+        }
+    }
+    
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        let workout = workouts[rowIndex]
+        presentController(withName: "Exercise", context: workout)
     }
 }

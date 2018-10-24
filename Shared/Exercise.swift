@@ -8,13 +8,25 @@
 
 import Foundation
 
-class Exercise: Codable {
+class Exercise: Codable, CustomStringConvertible {
     var name: String
     var primary: String
     var secondary: String?
     var sets: Int
     var reps: Int
     var favorite: Bool
+    
+    var description: String {
+        return """
+        \nEXERCISE
+        Name: \(self.name)
+        Primary: \(self.primary)
+        Secondary: \(self.secondary ?? "")
+        Sets: \(self.sets)
+        Reps: \(self.reps)
+        Favorite: \(self.favorite)
+        """
+    }
     
     init(name: String, primary: String, secondary: String = "", sets: Int = 0, reps: Int = 0, favorite: Bool = false) {
         self.name = name
@@ -31,53 +43,57 @@ class Exercise: Codable {
     static func save<T: Encodable>(object: T) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted // terminal viewing only
+        guard let path = Bundle.main.path(forResource: "Exercises", ofType: "json") else { return }
         let data = try! encoder.encode(object)
         let jsonString = String(data: data, encoding: .utf8)!
         
         do {
-            try jsonString.write(to: Exercise.fileURL, atomically: true, encoding: .utf8)
+            try jsonString.write(to: URL(fileURLWithPath: path), atomically: true, encoding: .utf8)
         } catch {
             print("FAILED WITH ERROR: \(error)") // implement actual catch
         }
     }
     
-    static func load() -> Exercise {
+    static func load() -> [Exercise] {
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: Exercise.fileURL.path), options: .mappedIfSafe)
-            let jsonResult = try JSONDecoder().decode(Exercise.self, from: data)
+            guard let path = Bundle.main.path(forResource: "Exercises", ofType: "json") else { return [] }
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let jsonResult = try JSONDecoder().decode([Exercise].self, from: data)
             let jsonString = String(data: data, encoding: .utf8)!
             print(jsonString)
             return jsonResult
         } catch {
             print("FAILED WITH ERROR: \(error)") // implement actual catch
-            return Exercise(name: "DIDNT LOAD", primary: "WRONG", sets: 4, reps: 12, favorite: false) // fix
         }
+        return [Exercise(name: "DIDNT LOAD", primary: "WRONG", sets: 4,reps: 12, favorite: false)] // fix
     }
     
     // fix implementation
-    class func allExercises() -> [Exercise] {
-        var exercises: [Exercise] = []
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: Exercise.fileURL.path)) else {
-            return exercises
-        }
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
-            json.forEach({ (dict: [String: String]) in exercises.append(Exercise(dictionary: dict)) })
-        } catch {
-            print(error) // better error handling
-        }
-        return exercises
-    }
-    
-    convenience init(dictionary: [String: String]) {
-        let name = dictionary["name"]!
-        let primary = dictionary["primary"]!
-        let secondary = dictionary["secondary"]!
-        let sets = dictionary["sets"]!
-        let reps = dictionary["reps"]!
-        let favorite = dictionary["favorite"]!
-        self.init(name: name, primary: primary, secondary: secondary, sets: Int(sets)!, reps: Int(reps)!, favorite: Bool(favorite)!)
-    }
+    /*
+     class func allExercises() -> [Exercise] {
+     var exercises: [Exercise] = []
+     guard let data = try? Data(contentsOf: URL(fileURLWithPath: Exercise.fileURL.path)) else {
+     return exercises
+     }
+     do {
+     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
+     json.forEach({ (dict: [String: Any]) in exercises.append(Exercise(dictionary: dict)) })
+     } catch {
+     print(error) // better error handling
+     }
+     return exercises
+     }
+     
+     convenience init(dictionary: [String: Any]) {
+     let name = dictionary["name"]!
+     let primary = dictionary["primary"]!
+     let secondary = dictionary["secondary"]!
+     let sets = dictionary["sets"]!
+     let reps = dictionary["reps"]!
+     let favorite = dictionary["favorite"]!
+     self.init(name: name as! String, primary: primary as! String, secondary: secondary as! String, sets: sets as! Int, reps: reps as! Int, favorite: favorite as! Bool)
+     }
+     */
 }
 
 // Allow usage of == operator
