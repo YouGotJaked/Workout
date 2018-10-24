@@ -88,14 +88,6 @@
                                                             <label alignment="left" text="7 EX" id="PTk-Ep-7Hf">
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             </label>
-                                                            <dateLabel alignment="right" id="Kw7-5o-f2D">
-                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <fontDescription key="font" type="system" pointSize="15"/>
-                                                                <dateFormatterStyle key="dateStyle" short="YES"/>
-                                                                <date key="previewedDate" timeIntervalSinceReferenceDate="567886140">
-                                                                    <!--2018-12-30 18:09:00 +0000-->
-                                                                </date>
-                                                            </dateLabel>
                                                         </items>
                                                     </group>
                                                 </items>
@@ -107,12 +99,6 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="CategoryLabel" destination="OfJ-si-nMa" id="0Of-41-sod"/>
-                        <outlet property="IntensityLabel" destination="Bow-On-Auq" id="IZ3-FV-1AN"/>
-                        <outlet property="categoryLabel" destination="OfJ-si-nMa" id="oqz-g3-SCz"/>
-                        <outlet property="dateCreatedLabel" destination="Kw7-5o-f2D" id="ia9-r0-EDE"/>
-                        <outlet property="intensityLabel" destination="Bow-On-Auq" id="RZM-Ll-JmC"/>
-                        <outlet property="sizeLabel" destination="PTk-Ep-7Hf" id="NTL-my-1vB"/>
                         <outlet property="workoutsTable" destination="0Ij-sv-F7y" id="BrM-JB-jJu"/>
                     </connections>
                 </controller>

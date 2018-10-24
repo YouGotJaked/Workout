@@ -14,10 +14,10 @@ class WorkoutListInterfaceController: WKInterfaceController {
     @IBOutlet var workoutsTable: WKInterfaceTable!
     
     // property to hold all workout information as an array of Workout instances
-    var workouts = Workout.allWorkouts()
+    var workouts = Workout.load()
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        workoutsTable.setNumberOfRows(workouts.count, withRowType: "WorkoutRow")
+        workoutsTable.setNumberOfRows(workouts.size, withRowType: "WorkoutRow")
     }
 }

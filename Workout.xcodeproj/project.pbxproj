@@ -27,6 +27,8 @@
 		1597EBBD2176DA3A001F743D /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EBBA2176C24D001F743D /* Workout.swift */; };
 		1597EBBE2176DA3D001F743D /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597EBB82176BEC5001F743D /* Exercise.swift */; };
 		159E51FE2178354B00F22841 /* WorkoutListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E51FD2178354B00F22841 /* WorkoutListInterfaceController.swift */; };
+		15A2CD76217D8F08000EC7FC /* Workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 15A2CD75217D8F08000EC7FC /* Workouts.json */; };
+		15A2CD77217D8F22000EC7FC /* Workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 15A2CD75217D8F08000EC7FC /* Workouts.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,10 +109,11 @@
 		1597EBA32176BA98001F743D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		1597EBA52176BA98001F743D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1597EBA72176BA98001F743D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1597EBB42176BCD6001F743D /* Exercises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Exercises.json; sourceTree = "<group>"; };
+		1597EBB42176BCD6001F743D /* Exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Exercises.json; sourceTree = "<group>"; };
 		1597EBB82176BEC5001F743D /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		1597EBBA2176C24D001F743D /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		159E51FD2178354B00F22841 /* WorkoutListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListInterfaceController.swift; sourceTree = "<group>"; };
+		15A2CD75217D8F08000EC7FC /* Workouts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Workouts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +228,7 @@
 		1597EBB32176BC97001F743D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				15A2CD75217D8F08000EC7FC /* Workouts.json */,
 				1597EBB82176BEC5001F743D /* Exercise.swift */,
 				1597EBBA2176C24D001F743D /* Workout.swift */,
 				1597EBB42176BCD6001F743D /* Exercises.json */,
@@ -331,11 +335,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Jake Day";
 				TargetAttributes = {
 					157EF1DC20379EF800AAAD7D = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					157EF1F220379EF800AAAD7D = {
@@ -354,6 +359,7 @@
 					};
 					1597EB9B2176BA98001F743D = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -388,6 +394,7 @@
 				1597EBB52176BCD6001F743D /* Exercises.json in Resources */,
 				157EF1ED20379EF800AAAD7D /* LaunchScreen.storyboard in Resources */,
 				157EF1EA20379EF800AAAD7D /* Assets.xcassets in Resources */,
+				15A2CD76217D8F08000EC7FC /* Workouts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +427,7 @@
 			files = (
 				1597EBA62176BA98001F743D /* Assets.xcassets in Resources */,
 				1597EBBC2176DA32001F743D /* Exercises.json in Resources */,
+				15A2CD77217D8F22000EC7FC /* Workouts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +532,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -531,6 +540,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -581,6 +591,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -588,6 +599,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -626,7 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.day.Workout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -640,7 +652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.day.Workout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -755,7 +767,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
@@ -773,7 +785,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};

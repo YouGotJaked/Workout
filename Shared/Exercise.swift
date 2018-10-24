@@ -14,16 +14,14 @@ class Exercise: Codable {
     var secondary: String?
     var sets: Int
     var reps: Int
-    var index: Int?
     var favorite: Bool
     
-    init(name: String, primary: String, secondary: String = "", sets: Int = 0, reps: Int = 0, index: Int = 0, favorite: Bool = false) {
+    init(name: String, primary: String, secondary: String = "", sets: Int = 0, reps: Int = 0, favorite: Bool = false) {
         self.name = name
         self.primary = primary
         self.secondary = secondary
         self.sets = sets
         self.reps = reps
-        self.index = index
         self.favorite = favorite
     }
     
@@ -77,9 +75,8 @@ class Exercise: Codable {
         let secondary = dictionary["secondary"]!
         let sets = dictionary["sets"]!
         let reps = dictionary["reps"]!
-        let index = dictionary["index"]!
         let favorite = dictionary["favorite"]!
-        self.init(name: name, primary: primary, secondary: secondary, sets: Int(sets)!, reps: Int(reps)!, index: Int(index)!, favorite: Bool(favorite)!)
+        self.init(name: name, primary: primary, secondary: secondary, sets: Int(sets)!, reps: Int(reps)!, favorite: Bool(favorite)!)
     }
 }
 

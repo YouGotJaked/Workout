@@ -41,9 +41,9 @@ class WorkoutInterfaceController: WKInterfaceController {
             
             // check if current exercise is favorite
             if workout.exercises[0].favorite {
-                // show heart symbol
+                favoriteButton.setTitle("Y")
             } else {
-                // show heart outline
+                favoriteButton.setTitle("N")
             }
             // provide option to favorite and un-favorite, long press
         }
@@ -51,6 +51,6 @@ class WorkoutInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        workout = Workout.allWorkouts().first
+        workout = Workout.load()
     }
 }

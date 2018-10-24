@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     private func save(image: UIImage) -> String? {
         let fileName = "FileName"
         let fileURL = documentsUrl.appendingPathComponent(fileName)
-        if let imageData = UIImageJPEGRepresentation(image, 1.0) {
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
             try? imageData.write(to: fileURL, options: .atomic)
             return fileName // ----> Save fileName
         }

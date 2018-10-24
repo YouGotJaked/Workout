@@ -1,8 +1,18 @@
-{
-  "secondary" : "",
-  "primary" : "pecs",
-  "sets" : 4,
-  "name" : "Bicep",
-  "reps" : 9,
-  "favorite" : true
-}
+[
+  {
+    "secondary" : "",
+    "primary" : "pecs",
+    "sets" : 4,
+    "name" : "Bicep",
+    "reps" : 9,
+    "favorite" : true
+  },
+  {
+    "secondary" : "",
+    "primary" : "deltoid",
+    "sets" : 4,
+    "name" : "delts",
+    "reps" : 12,
+    "favorite" : false
+  }
+]
