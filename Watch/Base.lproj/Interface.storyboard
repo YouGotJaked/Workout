@@ -14,47 +14,72 @@
             <objects>
                 <controller identifier="Exercise" title="Workout" hidesWhenLoading="NO" id="AbW-d2-nOg" customClass="WorkoutInterfaceController" customModule="Watch_Extension">
                     <items>
-                        <group width="1" alignment="left" id="zrD-E1-21t">
+                        <group width="1" alignment="left" layout="vertical" id="Uul-yv-CCJ">
                             <items>
-                                <group alignment="left" layout="vertical" spacing="0.0" id="cmF-Pn-xpU">
+                                <group width="1" alignment="left" id="zrD-E1-21t">
                                     <items>
-                                        <label alignment="left" text="Chest" id="DZU-Eu-2fg">
-                                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                                        <group alignment="left" layout="vertical" spacing="0.0" id="cmF-Pn-xpU">
+                                            <items>
+                                                <label alignment="left" text="Chest" id="DZU-Eu-2fg">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                                                </label>
+                                                <label alignment="left" text="Exercise 1" id="0uc-vY-Z5x"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="left" layout="vertical" spacing="0.0" id="syh-g2-Fh6">
+                                    <items>
+                                        <label alignment="left" text="Dumbbell Bench Press" numberOfLines="0" id="yhc-Ng-91M">
+                                            <fontDescription key="font" type="system" weight="semibold" pointSize="24"/>
                                         </label>
-                                        <label alignment="left" text="Exercise 1" id="0uc-vY-Z5x"/>
+                                        <group width="1" alignment="left" id="6gc-T7-41D">
+                                            <items>
+                                                <label alignment="left" text="4 x 8" id="TZc-c6-TZJ"/>
+                                                <label alignment="right" text="HIGH" id="xGC-E1-izR">
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </items>
+                                        </group>
                                     </items>
                                 </group>
+                                <button width="0.29999999999999999" alignment="left" title="❤️" id="EhT-RK-34M">
+                                    <connections>
+                                        <action selector="favoritButtonPress" destination="AbW-d2-nOg" id="Nb6-ZK-P6s"/>
+                                    </connections>
+                                </button>
                             </items>
-                            <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="0.0"/>
+                            <gestureRecognizers>
+                                <swipeGestureRecognizer direction="2" id="4PO-Hh-tK6">
+                                    <connections>
+                                        <action selector="swipeLeftWithGesture:" destination="AbW-d2-nOg" id="xTz-0L-1Gb"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer id="pJp-Kc-DQ9">
+                                    <connections>
+                                        <action selector="swipeRightWithGesture:" destination="AbW-d2-nOg" id="JHu-7L-Eg2"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer direction="8" id="Dw8-Mj-CQF">
+                                    <connections>
+                                        <action selector="swipeDownWithGesture:" destination="AbW-d2-nOg" id="74v-jF-aLM"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                            </gestureRecognizers>
                         </group>
-                        <group width="1" alignment="left" layout="vertical" spacing="0.0" id="syh-g2-Fh6">
-                            <items>
-                                <label alignment="left" text="Dumbbell Bench Press" numberOfLines="0" id="yhc-Ng-91M">
-                                    <fontDescription key="font" type="system" weight="semibold" pointSize="24"/>
-                                </label>
-                                <group width="1" alignment="left" id="6gc-T7-41D">
-                                    <items>
-                                        <label alignment="left" text="4 x 8" id="TZc-c6-TZJ"/>
-                                        <label alignment="right" text="HIGH" id="xGC-E1-izR">
-                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </items>
-                                </group>
-                            </items>
-                        </group>
-                        <button width="0.29999999999999999" alignment="left" title="❤️" id="EhT-RK-34M"/>
                     </items>
                     <connections>
                         <outlet property="categoryLabel" destination="DZU-Eu-2fg" id="5XE-qZ-W1j"/>
+                        <outlet property="exerciseIndexLabel" destination="0uc-vY-Z5x" id="Ltv-xy-W4c"/>
                         <outlet property="exerciseLabel" destination="yhc-Ng-91M" id="1aH-Gl-r0R"/>
-                        <outlet property="exerciseNumberLabel" destination="0uc-vY-Z5x" id="BX5-fn-h2k"/>
-                        <outlet property="favoriteButton" destination="EhT-RK-34M" id="2wp-WP-aDL"/>
+                        <outlet property="favoriteButton" destination="EhT-RK-34M" id="lhm-fH-1Ep"/>
                         <outlet property="intensityLabel" destination="xGC-E1-izR" id="7Fd-UX-9ow"/>
                         <outlet property="repetitionLabel" destination="TZc-c6-TZJ" id="PI1-pA-V0j"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-171" y="-5"/>
+            <point key="canvasLocation" x="294" y="-9"/>
         </scene>
         <!--Workout-->
         <scene sceneID="ekt-pA-iUi">

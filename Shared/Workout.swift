@@ -33,20 +33,12 @@ class Workout: Codable, CustomStringConvertible {
             print("\(oldCategory) has been renamed to \(self.category)")
         }
     }
-    var size: Int = 0 {
-        willSet(newSize) {
-            print("\(self.size) will be set to \(newSize)")
-        }
-        didSet(oldSize) {
-            print("\(oldSize) has been resized to \(self.size)")
-        }
-    }
     var intensity: Intensity = Intensity.mix {
         willSet(newIntensity) {
             print("\(self.intensity) will be set to \(newIntensity)")
         }
         didSet(oldIntensity) {
-            print("\(oldIntensity) has been renamed to \(self.size)")
+            print("\(oldIntensity) has been renamed to \(self.intensity)")
         }
     }
     var exercises: [Exercise] = [] {
@@ -63,16 +55,15 @@ class Workout: Codable, CustomStringConvertible {
         return """
         \nWORKOUT
         Category: \(self.category)
-        Size: \(self.size)
+        Size: \(self.exercises.count)
         Intensity: \(self.intensity)
         Exercises: \(self.exercises)
         """
     }
     
     // CONSTRUCTOR
-    init(category: String, size: Int = 6, intensity: Intensity = Intensity.mix, exercises: [Exercise] = []) {
+    init(category: String, intensity: Intensity = Intensity.mix, exercises: [Exercise] = []) {
         self.category = category
-        self.size = size
         self.intensity = intensity
         self.exercises = exercises
     }
@@ -96,8 +87,10 @@ class Workout: Codable, CustomStringConvertible {
         }
     }
     
+    /*
     static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     static let fileURL = DocumentDirURL.appendingPathComponent("Workouts").appendingPathExtension("json")
+    */
     
     static func save<T: Encodable>(object: T) {
         let encoder = JSONEncoder()
@@ -155,7 +148,6 @@ class Workout: Codable, CustomStringConvertible {
 extension Workout: Equatable {
     static func ==(lhs: Workout, rhs: Workout) -> Bool {
         return lhs.category == rhs.category &&
-            lhs.size == rhs.size &&
             lhs.intensity == rhs.intensity &&
             lhs.exercises == rhs.exercises
     }

@@ -12,20 +12,22 @@ import Foundation
 
 class WorkoutInterfaceController: WKInterfaceController {
     @IBOutlet var categoryLabel: WKInterfaceLabel!
-    @IBOutlet var exerciseNumberLabel: WKInterfaceLabel!
+    @IBOutlet var exerciseIndexLabel: WKInterfaceLabel!
     @IBOutlet var exerciseLabel: WKInterfaceLabel!
     @IBOutlet var repetitionLabel: WKInterfaceLabel!
     @IBOutlet var intensityLabel: WKInterfaceLabel!
     @IBOutlet var favoriteButton: WKInterfaceButton!
+    
+    var exerciseIndex = 0
     
     var workout: Workout? {
         didSet {
             guard let workout = workout else { return }
             
             categoryLabel.setText("\(workout.category)")
-            exerciseNumberLabel.setText("Exercise 1") // change to current exercise in workout
-            exerciseLabel.setText("\(workout.exercises[0].name)")
-            repetitionLabel.setText("\(workout.exercises[0].sets) x \(workout.exercises[0].reps)")
+            exerciseIndexLabel.setText("Exercise \(exerciseIndex + 1)") // change to current exercise in workout
+            exerciseLabel.setText("\(workout.exercises[exerciseIndex].name)")
+            repetitionLabel.setText("\(workout.exercises[exerciseIndex].sets) x \(workout.exercises[exerciseIndex].reps)")
             // check workout intensity
             switch workout.intensity.rawValue {
             case "high":
@@ -40,13 +42,21 @@ class WorkoutInterfaceController: WKInterfaceController {
             intensityLabel.setText("\(workout.intensity.rawValue.uppercased())")
             
             // check if current exercise is favorite
-            if workout.exercises[0].favorite {
-                favoriteButton.setTitle("Y")
+            if workout.exercises[exerciseIndex].favorite {
+                favoriteButton.setTitle("💔")
             } else {
-                favoriteButton.setTitle("N")
+                favoriteButton.setTitle("❤️")
             }
             // provide option to favorite and un-favorite, long press
         }
+    }
+    
+    private func setInterface() {
+        exerciseIndexLabel.setText("Exercise \(exerciseIndex + 1)") // change to current exercise in workout
+        exerciseLabel.setText("\(self.workout?.exercises[exerciseIndex].name ?? "nil")")
+        repetitionLabel.setText("\(self.workout?.exercises[exerciseIndex].sets ?? -1) x \(self.workout?.exercises[exerciseIndex].reps ?? -1)")
+        // check if current exercise is favorite
+        (self.workout?.exercises[exerciseIndex].favorite)! ? favoriteButton.setTitle("💔") : favoriteButton.setTitle("❤️")
     }
     
     override func awake(withContext context: Any?) {
@@ -55,4 +65,57 @@ class WorkoutInterfaceController: WKInterfaceController {
             self.workout = workout
         }
     }
+
+    // Press favorite button (double tap or long press later?) to add/remove from favorites
+    @IBAction func favoritButtonPress() {
+        guard let favorite = self.workout?.exercises[exerciseIndex].favorite else { return }
+        
+        favorite ? favoriteButton.setTitle("💔") : favoriteButton.setTitle("❤️")
+        /*
+        if favorite {
+            favoriteButton.setTitle("💔")
+        } else {
+            favoriteButton.setTitle("❤️")
+        }
+        */
+        self.workout?.exercises[exerciseIndex].favorite = !favorite
+    }
+    
+    // Swipe left to navigate to next exercise in workout
+    @IBAction func swipeLeft(gesture: WKGestureRecognizer) {
+        // prevent scrolling past last index
+        if exerciseIndex >= (self.workout?.exercises.count)! - 1 { return }
+        if let swipeGesture = gesture as? WKSwipeGestureRecognizer {
+            if swipeGesture.direction == WKSwipeGestureRecognizerDirection.left {
+                    exerciseIndex += 1
+                    print("Swipe left")
+                    print("exerciseIndex = \(exerciseIndex)")
+                    setInterface()
+            }
+        }
+    }
+    
+    // Swipe right to navigate to previous exercise in workout
+    @IBAction func swipeRight(gesture: WKGestureRecognizer) {
+        // prevent scrolling past first index
+        if exerciseIndex <= 0 { return }
+        if let swipeGesture = gesture as? WKSwipeGestureRecognizer {
+            if swipeGesture.direction == WKSwipeGestureRecognizerDirection.right {
+                exerciseIndex -= 1
+                print("Swipe right")
+                print("exerciseIndex = \(exerciseIndex)")
+                setInterface()
+            }
+        }
+    }
+    
+    // Swipe down to return to WorkoutListInterface
+    @IBAction func swipeDown(gesture: WKGestureRecognizer) {
+        if let swipeGesture = gesture as? WKSwipeGestureRecognizer {
+            if swipeGesture.direction == WKSwipeGestureRecognizerDirection.down {
+                print("Swipe down")
+            }
+        }
+    }
 }
+

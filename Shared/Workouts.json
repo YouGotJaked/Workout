@@ -1,0 +1,87 @@
+[
+  {
+    "size" : 6,
+    "exercises" : [
+      {
+        "secondary" : "traps",
+        "primary" : "pecs",
+        "sets" : 4,
+        "name" : "bench",
+        "reps" : 8,
+        "favorite" : true
+      },
+      {
+        "secondary" : "traps",
+        "primary" : "pecs",
+        "sets" : 4,
+        "name" : "incline bench",
+        "reps" : 8,
+        "favorite" : true
+      }
+    ],
+    "intensity" : "high",
+    "category" : "arms"
+  },
+  {
+      "size" : 6,
+      "exercises" : [
+          {
+              "secondary" : "traps",
+              "primary" : "pecs",
+              "sets" : 4,
+              "name" : "bench",
+              "reps" : 8,
+              "favorite" : true
+          },
+          {
+              "secondary" : "traps",
+              "primary" : "pecs",
+              "sets" : 4,
+              "name" : "incline bench",
+              "reps" : 8,
+              "favorite" : true
+          }
+      ],
+      "intensity" : "high",
+      "category" : "arms"
+  },
+  {
+      "size" : 3,
+      "exercises" : [
+          {
+              "secondary" : "Hamstring",
+              "primary" : "Quads",
+              "sets" : 4,
+              "name" : "Squat",
+              "reps" : 15,
+              "favorite" : true
+          },
+          {
+              "secondary" : "o",
+              "primary" : "Calves",
+              "sets" : 4,
+              "name" : "Calf Raises",
+              "reps" : 15,
+              "favorite" : false
+          },
+          {
+              "secondary" : "",
+              "primary" : "Hamstring",
+              "sets" : 4,
+              "name" : "Leg Curls",
+              "reps" : 12,
+              "favorite" : false
+          },
+          {
+              "secondary" : "",
+              "primary" : "Quads",
+              "sets" : 4,
+              "name" : "Leg Extension",
+              "reps" : 12,
+              "favorite" : true
+          }
+      ],
+      "intensity" : "mix",
+      "category" : "Legs"
+  }
+]

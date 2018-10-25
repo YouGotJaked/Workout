@@ -37,8 +37,10 @@ class Exercise: Codable, CustomStringConvertible {
         self.favorite = favorite
     }
     
+    /*
     static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     static let fileURL = DocumentDirURL.appendingPathComponent("/iOS/Workout/Shared/Exercises").appendingPathExtension("json")
+    */
     
     static func save<T: Encodable>(object: T) {
         let encoder = JSONEncoder()
