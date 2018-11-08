@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1539779121940329009DBAA3 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539779021940329009DBAA3 /* FavoritesViewController.swift */; };
 		157EF1E120379EF800AAAD7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EF1E020379EF800AAAD7D /* AppDelegate.swift */; };
 		157EF1E320379EF800AAAD7D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EF1E220379EF800AAAD7D /* HomeViewController.swift */; };
 		157EF1EA20379EF800AAAD7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157EF1E920379EF800AAAD7D /* Assets.xcassets */; };
-		157EF1ED20379EF800AAAD7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157EF1EB20379EF800AAAD7D /* LaunchScreen.storyboard */; };
 		157EF1F820379EF800AAAD7D /* WorkoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EF1F720379EF800AAAD7D /* WorkoutTests.swift */; };
 		157EF20320379EF800AAAD7D /* WorkoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EF20220379EF800AAAD7D /* WorkoutUITests.swift */; };
 		158DA3A52176EFFE002A54AF /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DA3A42176EFFE002A54AF /* WorkoutInterfaceController.swift */; };
@@ -30,6 +30,8 @@
 		15A2CD76217D8F08000EC7FC /* Workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 15A2CD75217D8F08000EC7FC /* Workouts.json */; };
 		15A2CD77217D8F22000EC7FC /* Workouts.json in Resources */ = {isa = PBXBuildFile; fileRef = 15A2CD75217D8F08000EC7FC /* Workouts.json */; };
 		15A2CD7921804EEE000EC7FC /* WorkoutRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A2CD7821804EEE000EC7FC /* WorkoutRowController.swift */; };
+		15A903792192A4DD00379FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A903782192A4DD00379FDD /* LaunchScreen.storyboard */; };
+		15A9037B2192A51100379FDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A9037A2192A51100379FDD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,11 +91,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1539779021940329009DBAA3 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		157EF1DD20379EF800AAAD7D /* Workout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		157EF1E020379EF800AAAD7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157EF1E220379EF800AAAD7D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		157EF1E920379EF800AAAD7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		157EF1EC20379EF800AAAD7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		157EF1EE20379EF800AAAD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		157EF1F320379EF800AAAD7D /* WorkoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		157EF1F720379EF800AAAD7D /* WorkoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTests.swift; sourceTree = "<group>"; };
@@ -116,6 +118,8 @@
 		159E51FD2178354B00F22841 /* WorkoutListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListInterfaceController.swift; sourceTree = "<group>"; };
 		15A2CD75217D8F08000EC7FC /* Workouts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Workouts.json; sourceTree = "<group>"; };
 		15A2CD7821804EEE000EC7FC /* WorkoutRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRowController.swift; sourceTree = "<group>"; };
+		15A903782192A4DD00379FDD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		15A9037A2192A51100379FDD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,8 +185,10 @@
 				157EF1E020379EF800AAAD7D /* AppDelegate.swift */,
 				157EF1E220379EF800AAAD7D /* HomeViewController.swift */,
 				157EF1E920379EF800AAAD7D /* Assets.xcassets */,
-				157EF1EB20379EF800AAAD7D /* LaunchScreen.storyboard */,
 				157EF1EE20379EF800AAAD7D /* Info.plist */,
+				15A903782192A4DD00379FDD /* LaunchScreen.storyboard */,
+				15A9037A2192A51100379FDD /* Main.storyboard */,
+				1539779021940329009DBAA3 /* FavoritesViewController.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -394,8 +400,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A903792192A4DD00379FDD /* LaunchScreen.storyboard in Resources */,
+				15A9037B2192A51100379FDD /* Main.storyboard in Resources */,
 				1597EBB52176BCD6001F743D /* Exercises.json in Resources */,
-				157EF1ED20379EF800AAAD7D /* LaunchScreen.storyboard in Resources */,
 				157EF1EA20379EF800AAAD7D /* Assets.xcassets in Resources */,
 				15A2CD76217D8F08000EC7FC /* Workouts.json in Resources */,
 			);
@@ -444,6 +451,7 @@
 				157EF1E120379EF800AAAD7D /* AppDelegate.swift in Sources */,
 				157EF1E320379EF800AAAD7D /* HomeViewController.swift in Sources */,
 				1597EBB92176BEC5001F743D /* Exercise.swift in Sources */,
+				1539779121940329009DBAA3 /* FavoritesViewController.swift in Sources */,
 				1597EBBB2176C24D001F743D /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,14 +511,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		157EF1EB20379EF800AAAD7D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				157EF1EC20379EF800AAAD7D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		1597EB922176BA98001F743D /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

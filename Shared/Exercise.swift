@@ -37,11 +37,6 @@ class Exercise: Codable, CustomStringConvertible {
         self.favorite = favorite
     }
     
-    /*
-    static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    static let fileURL = DocumentDirURL.appendingPathComponent("/iOS/Workout/Shared/Exercises").appendingPathExtension("json")
-    */
-    
     static func save<T: Encodable>(object: T) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted // terminal viewing only
@@ -69,33 +64,6 @@ class Exercise: Codable, CustomStringConvertible {
         }
         return [Exercise(name: "DIDNT LOAD", primary: "WRONG", sets: 4,reps: 12, favorite: false)] // fix
     }
-    
-    // fix implementation
-    /*
-     class func allExercises() -> [Exercise] {
-     var exercises: [Exercise] = []
-     guard let data = try? Data(contentsOf: URL(fileURLWithPath: Exercise.fileURL.path)) else {
-     return exercises
-     }
-     do {
-     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
-     json.forEach({ (dict: [String: Any]) in exercises.append(Exercise(dictionary: dict)) })
-     } catch {
-     print(error) // better error handling
-     }
-     return exercises
-     }
-     
-     convenience init(dictionary: [String: Any]) {
-     let name = dictionary["name"]!
-     let primary = dictionary["primary"]!
-     let secondary = dictionary["secondary"]!
-     let sets = dictionary["sets"]!
-     let reps = dictionary["reps"]!
-     let favorite = dictionary["favorite"]!
-     self.init(name: name as! String, primary: primary as! String, secondary: secondary as! String, sets: sets as! Int, reps: reps as! Int, favorite: favorite as! Bool)
-     }
-     */
 }
 
 // Allow usage of == operator

@@ -27,7 +27,7 @@ class WorkoutRowController: NSObject {
             case "low":
                 intensityLabel.setTextColor(.green)
             default:
-                intensityLabel.setAlpha(0) // make invisible
+                intensityLabel.setAlpha(0) // invisible
             }
             intensityLabel.setText(workout.intensity.rawValue.uppercased())
             exerciseNumberLabel.setText(

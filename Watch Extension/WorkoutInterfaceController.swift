@@ -9,7 +9,6 @@
 import WatchKit
 import Foundation
 
-
 class WorkoutInterfaceController: WKInterfaceController {
     @IBOutlet var categoryLabel: WKInterfaceLabel!
     @IBOutlet var exerciseIndexLabel: WKInterfaceLabel!
@@ -28,6 +27,7 @@ class WorkoutInterfaceController: WKInterfaceController {
             exerciseIndexLabel.setText("Exercise \(exerciseIndex + 1)") // change to current exercise in workout
             exerciseLabel.setText("\(workout.exercises[exerciseIndex].name)")
             repetitionLabel.setText("\(workout.exercises[exerciseIndex].sets) x \(workout.exercises[exerciseIndex].reps)")
+            
             // check workout intensity
             switch workout.intensity.rawValue {
             case "high":
@@ -42,16 +42,13 @@ class WorkoutInterfaceController: WKInterfaceController {
             intensityLabel.setText("\(workout.intensity.rawValue.uppercased())")
             
             // check if current exercise is favorite
-            if workout.exercises[exerciseIndex].favorite {
-                favoriteButton.setTitle("💔")
-            } else {
-                favoriteButton.setTitle("❤️")
-            }
+            workout.exercises[exerciseIndex].favorite ? favoriteButton.setTitle("💔") : favoriteButton.setTitle("❤️")
+            
             // provide option to favorite and un-favorite, long press
         }
     }
     
-    private func setInterface() {
+    private func setExercise() {
         exerciseIndexLabel.setText("Exercise \(exerciseIndex + 1)") // change to current exercise in workout
         exerciseLabel.setText("\(self.workout?.exercises[exerciseIndex].name ?? "nil")")
         repetitionLabel.setText("\(self.workout?.exercises[exerciseIndex].sets ?? -1) x \(self.workout?.exercises[exerciseIndex].reps ?? -1)")
@@ -71,13 +68,7 @@ class WorkoutInterfaceController: WKInterfaceController {
         guard let favorite = self.workout?.exercises[exerciseIndex].favorite else { return }
         
         favorite ? favoriteButton.setTitle("💔") : favoriteButton.setTitle("❤️")
-        /*
-        if favorite {
-            favoriteButton.setTitle("💔")
-        } else {
-            favoriteButton.setTitle("❤️")
-        }
-        */
+
         self.workout?.exercises[exerciseIndex].favorite = !favorite
     }
     
@@ -85,12 +76,13 @@ class WorkoutInterfaceController: WKInterfaceController {
     @IBAction func swipeLeft(gesture: WKGestureRecognizer) {
         // prevent scrolling past last index
         if exerciseIndex >= (self.workout?.exercises.count)! - 1 { return }
+        
         if let swipeGesture = gesture as? WKSwipeGestureRecognizer {
             if swipeGesture.direction == WKSwipeGestureRecognizerDirection.left {
                     exerciseIndex += 1
                     print("Swipe left")
                     print("exerciseIndex = \(exerciseIndex)")
-                    setInterface()
+                    setExercise()
             }
         }
     }
@@ -99,12 +91,13 @@ class WorkoutInterfaceController: WKInterfaceController {
     @IBAction func swipeRight(gesture: WKGestureRecognizer) {
         // prevent scrolling past first index
         if exerciseIndex <= 0 { return }
+        
         if let swipeGesture = gesture as? WKSwipeGestureRecognizer {
             if swipeGesture.direction == WKSwipeGestureRecognizerDirection.right {
                 exerciseIndex -= 1
                 print("Swipe right")
                 print("exerciseIndex = \(exerciseIndex)")
-                setInterface()
+                setExercise()
             }
         }
     }
@@ -114,6 +107,7 @@ class WorkoutInterfaceController: WKInterfaceController {
         if let swipeGesture = gesture as? WKSwipeGestureRecognizer {
             if swipeGesture.direction == WKSwipeGestureRecognizerDirection.down {
                 print("Swipe down")
+                presentController(withName: "WorkoutList", context: workout)
             }
         }
     }

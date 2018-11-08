@@ -87,11 +87,6 @@ class Workout: Codable, CustomStringConvertible {
         }
     }
     
-    /*
-    static let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    static let fileURL = DocumentDirURL.appendingPathComponent("Workouts").appendingPathExtension("json")
-    */
-    
     static func save<T: Encodable>(object: T) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted // terminal viewing only
@@ -119,30 +114,6 @@ class Workout: Codable, CustomStringConvertible {
             return [] // fix
         }
     }
-    
-    /* fix implementation
-     class func allWorkouts() -> [Workout] {
-     var workouts: [Workout] = []
-     guard let data = try? Data(contentsOf: URL(fileURLWithPath: Workout.fileURL.path), options: .mappedIfSafe) else {
-     return workouts
-     }
-     do {
-     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String: String]]
-     json.forEach({ (dict: [String: String]) in workouts.append(Workout(dictionary: dict)) })
-     } catch {
-     print(error) // better error handling
-     }
-     return workouts
-     }
-     
-     convenience init(dictionary: [String: String]) {
-     let category = dictionary["category"]!
-     let size = dictionary["size"]!
-     let intensity = dictionary["intensity"]!
-     //let exercises = dictionary["exercises"]!
-     self.init(category: category, size: Int(size)!, intensity: Intensity(rawValue: intensity)!, exercises: Exercise.load())
-     }
-     */
 }
 
 extension Workout: Equatable {
